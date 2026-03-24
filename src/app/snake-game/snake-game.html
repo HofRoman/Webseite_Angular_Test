@@ -1,0 +1,61 @@
+<div class="game-wrapper">
+  <header class="game-header">
+    <div class="header-title">
+      <span class="snake-icon">🐍</span>
+      <h1>Snake Game</h1>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">Punkte</span>
+        <span class="stat-value score">{{ score() }}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Highscore</span>
+        <span class="stat-value highscore">{{ highScore() }}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Level</span>
+        <span class="stat-value level">{{ level() }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="canvas-container">
+    <canvas
+      #gameCanvas
+      [width]="canvasSize"
+      [height]="canvasSize"
+      class="game-canvas"
+    ></canvas>
+  </div>
+
+  <div class="controls">
+    @if (isIdle() || isGameOver()) {
+      <button class="btn btn-start" (click)="startGame()">
+        {{ isGameOver() ? '🔄 Neu starten' : '▶ Starten' }}
+      </button>
+    }
+    @if (isRunning() || isPaused()) {
+      <button class="btn btn-pause" (click)="togglePause()">
+        {{ isPaused() ? '▶ Fortfahren' : '⏸ Pause' }}
+      </button>
+    }
+    @if (isRunning() || isPaused()) {
+      <button class="btn btn-restart" (click)="startGame()">
+        🔄 Neu
+      </button>
+    }
+  </div>
+
+  <div class="instructions">
+    <div class="key-group">
+      <span class="key-label">Steuerung:</span>
+      <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
+      <span class="key-label">oder</span>
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+    </div>
+    <div class="key-group">
+      <kbd>Space</kbd> <span class="key-label">Pause / Start</span>
+    </div>
+  </div>
+</div>

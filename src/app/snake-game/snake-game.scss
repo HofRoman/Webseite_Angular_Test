@@ -1,0 +1,206 @@
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 16px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+}
+
+// Header
+.game-header {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .snake-icon {
+      font-size: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #4ade80;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+    }
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 14px;
+    min-width: 60px;
+
+    .stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 500;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+
+      &.score  { color: #4ade80; }
+      &.highscore { color: #facc15; }
+      &.level  { color: #60a5fa; }
+    }
+  }
+}
+
+// Canvas
+.canvas-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px rgba(74, 222, 128, 0.3),
+    0 0 40px rgba(74, 222, 128, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.game-canvas {
+  display: block;
+  cursor: default;
+}
+
+// Buttons
+.controls {
+  display: flex;
+  gap: 12px;
+
+  .btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+    letter-spacing: 0.3px;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &.btn-start {
+      background: linear-gradient(135deg, #4ade80, #16a34a);
+      color: #0f172a;
+      box-shadow: 0 4px 15px rgba(74, 222, 128, 0.35);
+
+      &:hover {
+        box-shadow: 0 6px 20px rgba(74, 222, 128, 0.5);
+        transform: translateY(-1px);
+      }
+    }
+
+    &.btn-pause {
+      background: linear-gradient(135deg, #facc15, #d97706);
+      color: #0f172a;
+      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+
+      &:hover {
+        box-shadow: 0 6px 20px rgba(250, 204, 21, 0.45);
+        transform: translateY(-1px);
+      }
+    }
+
+    &.btn-restart {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+// Instructions
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+
+  .key-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .key-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 26px;
+    padding: 0 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: inherit;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+  }
+}
+
+// Responsive
+@media (max-width: 520px) {
+  .game-header {
+    justify-content: center;
+
+    .header-title h1 {
+      font-size: 18px;
+    }
+  }
+
+  .game-canvas {
+    width: 320px !important;
+    height: 320px !important;
+  }
+
+  .instructions {
+    font-size: 11px;
+  }
+}
